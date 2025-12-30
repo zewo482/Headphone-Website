@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Boat Real Beat - Details</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f7f9fc;
+        margin: 0;
+        padding: 20px;
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 8%;
+        background: rgba(255,255,255,0.55);
+        backdrop-filter: blur(14px);
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
+
+    .logo {
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .nav-buttons a {
+        padding: 10px 25px;
+        border-radius: 40px;
+        border: 2px solid #111;
+        text-decoration: none;
+        color: #111;
+        margin-left: 15px;
+    }
+
+    .nav-buttons a:hover {
+        background-color: #8b9088;
+        transform: scale(1.05);
+    }
+
+    .container {
+        background: #fff;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .product-img {
+        width: 100%;
+        border-radius: 12px;
+        height: 350px;
+        object-fit: contain;
+        background: #f2f4f6;
+    }
+
+    h2 {
+        margin-top: 15px;
+        font-size: 26px;
+    }
+
+    .price {
+        font-size: 22px;
+        font-weight: 600;
+        margin-top: 10px;
+    }
+
+    .old-price {
+        text-decoration: line-through;
+        color: #777;
+        margin-left: 10px;
+    }
+
+    .buy-btn {
+        margin-top: 25px;
+        display: inline-block;
+        padding: 12px 30px;
+        background: linear-gradient(135deg, #75de41, #a8ff78);
+        border-radius: 30px;
+        text-decoration: none;
+        color: #000;
+        font-weight: 600;
+        box-shadow: 0 0 10px rgba(117,222,65,0.4);
+    }
+
+    .buy-btn:hover {
+        transform: scale(1.07);
+        box-shadow: 0 0 15px rgba(32,33,31,0.8);
+    }
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">EAR-ZONE</div>
+    <div class="nav-buttons">
+        <a href="{% url 'item' %}">Back</a>
+    </div>
+</header>
+
+<div class="container">
+    <img src="{% static 'image/hp1.jpg' %}" class="product-img">
+
+    <h2>Boat Real Beat</h2>
+    <p>Mode Sync Realbeat – rich bass, smooth mids, & HD clarity.</p>
+
+    <h3 class="price">₹1,799 <span class="old-price">₹5,999</span></h3>
+
+    <h3>Specifications:</h3>
+    <ul>
+        <li>Deep Bass Sound</li>
+        <li>40mm Dynamic Drivers</li>
+        <li>12 Hours Battery Backup</li>
+        <li>Comfort Cushions</li>
+        <li>Bluetooth 5.0</li>
+    </ul>
+
+    <a href="{% url 'mhp_form' %}" class="buy-btn">Buy Now</a>
+</div>
+
+</body>
+</html>

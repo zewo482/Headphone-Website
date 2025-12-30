@@ -1,0 +1,93 @@
+{% load static %}
+<div class="form-container">
+    <h1>Add New User</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ vv.as_p }}
+        <button type="submit">Add User</button>
+    </form>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'login' %}">Already have an account? Log in</a>
+</div>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("{%static '/image/login.jpg' %}");   
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-container {
+    background: #ffffff;
+    padding: 45px 55px;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+    width: 380px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #333;
+    letter-spacing: 1px;
+}
+
+form p {
+    text-align: left;
+    margin-bottom: 15px;
+}
+input, select, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
+}
+
+button {
+    background: linear-gradient(135deg, #4a90e2, #0072ff);
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+}
+button:hover {
+    background: linear-gradient(135deg, #5aa3f5, #3393ff);
+    transform: scale(1.03);
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #0072ff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: #0056cc;
+    text-decoration: underline;
+}
+</style>

@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("{% static '/image/oder.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+        .form-container {
+            background: rgba(255, 255, 255, 0.015); 
+            backdrop-filter: blur(5px);
+            padding: 35px 40px;
+            border-radius: 25px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.25);
+            width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: fadeIn 0.8s ease-in-out;
+        
+        }
+        label {
+            font-size: 14px;
+            color: #000000;
+            text-align: left;
+            margin-bottom: 3px;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+
+        a {
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+            font-weight: 600;
+        }
+        a:hover {
+            background-color: #43a047;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Order Placed Successfully🎉</h1>
+        <a href="{% url 'add_user' %}">Add Another User</a>
+    </div>
+</body>
+</html>

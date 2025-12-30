@@ -1,0 +1,318 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MHP | Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url("{% static 'image/img.jpg' %}") no-repeat center center/cover;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        /* ===== Overlay ===== */
+        body::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 0;
+        }
+
+        /* ===== Navbar ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: #75de41;
+            letter-spacing: 1.2px;
+        }
+
+        .nav-buttons a {
+            border: 2px solid #75de41;
+            color: #75de41;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #75de41;
+            color: #000;
+            transform: scale(1.07);
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 8%;
+            height: 75vh;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .intro-text {
+            font-size: 16px;
+            letter-spacing: 3px;
+            color: #b3b3b3;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: 50px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, #75de41, #a8ff78);
+            color: #000;
+            padding: 14px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 0 12px rgba(117, 222, 65, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 20px rgba(117, 222, 65, 0.8);
+        }
+
+        /* ===== Product Section ===== */
+        .product-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            justify-content: center;
+            margin: 60px 8%;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            color: #000;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background-color: #f2f4f6;
+        }
+
+        .badge {
+            position: absolute;
+            background-color: #00b8d4;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 5px 8px;
+            border-radius: 8px;
+            top: 10px;
+            left: 10px;
+        }
+
+        .rating {
+            position: absolute;
+            background-color: white;
+            border-radius: 12px;
+            padding: 3px 6px;
+            font-size: 12px;
+            font-weight: 500;
+            right: 10px;
+            top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .rating::after {
+            content: "★";
+            color: #00b8d4;
+            font-size: 12px;
+        }
+
+        .product-details {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product-details h3 {
+            margin: 5px 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .product-details p {
+            font-size: 13px;
+            color: #555;
+            margin: 3px 0 8px;
+        }
+
+        .price {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            font-size: 13px;
+            color: #888;
+            margin-left: 5px;
+        }
+
+        /* ===== Buy Button ===== */
+        .buy-btn {
+            display: inline-block;
+            margin-top: 12px;
+            background: linear-gradient(135deg, #75de41, #a8ff78);
+            color: #000;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(117, 222, 65, 0.4);
+        }
+
+        .buy-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 15px rgba(117, 222, 65, 0.8);
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            font-size: 14px;
+            color: #bfbfbf;
+        }
+
+        footer a {
+            color: #75de41;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 34px;
+            }
+
+            .hero {
+                padding: 0 6%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-buttons a {
+                margin: 5px;
+                padding: 8px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ===== Navbar ===== -->
+    <header>
+        <div class="logo">EAR-ZONE</div>
+        <div class="nav-buttons">
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'add_user' %}">Sign Up</a>
+        </div>
+    </header>
+
+    <!-- ===== Hero Section ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="intro-text">Introducing the MHP Order System</p>
+            <h1>Professional Monitoring Headphones<br>Engineered for Accuracy</h1>
+            <a href="{% url 'item' %}" class="cta-btn">Home</a>
+        </div>
+    </section>
+
+   
+    <!-- ===== Footer ===== -->
+    <footer>
+        © {% now "Y" %} MHP Headphones. All Rights Reserved. |
+        <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a>
+    </footer>
+
+</body>
+</html>
